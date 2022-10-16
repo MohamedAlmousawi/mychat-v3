@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}
+    Logged Out
+{% endblock title %}
+{% block content %}
+<br>
+    <h1 class="text-center alert alert-secondary" >Logged Out</h1>
+<div class="alert alert-secondary" style="min-height:75px;">
+  <p>Thanks for spending some quality time with the web site today.
+</p>
+<p><a href="{% url 'login' %}">Login Again</a></p>
+</div>
+{% endblock content %}

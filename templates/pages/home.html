@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+    <h1 class="text-center alert alert-secondary" >Django Chat</h1>
+    
+    <form class=" alert alert-secondary" method="post">
+{% csrf_token %}
+      <p><label for="id_room_name">Room name:</label> <input type="text" name="room_name" class="form-control" maxlength="100"  id="id_room_name"></p>
+<p><label for="id_secret_key">Secret key:</label> <input type="password" name="secret_key" required class="form-control" maxlength="16" id="id_secret_key"></p>
+      <div class="d-grid gap-2">
+
+      <button class="btn btn-dark" type="submit">join</button>
+    </div>
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message}}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+    </form>
+{% endblock content %}

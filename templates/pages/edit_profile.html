@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}
+    settings
+{% endblock title %}
+{% block content %}
+<br>
+    <h1 class="text-center alert alert-secondary" >Edit Profile</h1>
+<div class="alert alert-secondary" style="min-height:75px;">
+
+<form class="alert alert-secondary" method='post' enctype= "multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form form1 %}
+  {% bootstrap_form form2 %}
+  {% buttons %}
+        <div class="d-grid gap-2">
+
+      <button class="btn btn-dark" type="submit" >Save</button>
+    </div>
+  {% endbuttons %}
+</form>
+{% endblock content %}

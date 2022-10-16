@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}
+  register
+{% endblock title %}
+{% block content %}
+<br>
+    <h1 class="text-center alert alert-secondary" >Register</h1>
+<div class="alert alert-secondary" style="min-height:75px;">
+
+<form class="alert alert-secondary" method='post' >
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+        <div class="d-grid gap-2">
+
+      <button class="btn btn-dark" type="submit" >Register</button>
+    </div>
+  {% endbuttons %}
+</form>
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{chat}} Room 
+{% endblock title %}
+{% block content %}
+{% load lower_filter %}
+<br>
+{% if chat.id|checking:user.id %}
+
+<div class=" alert alert-secondary">
+    <h1 class="text-center" >{{chat}} 
+
+  
+  
+      </h1>
+<form method="get" dir="rtl">
+  <button type="submit" style="border: none;
+    background: none;" name="leave" >Leave</button>
+  <p>secret_key : {{chat.secret_key}}</p> </form>
+    </div>
+<div class="alert alert-secondary" style="min-height:75px;">
+{% for message in chat_messages %}
+<div class="alert alert-dark" >
+<p><strong><a href="{% url 'profile' message.user.id %}" style="color:black;">{{message.user}}</a></strong></p>
+<p>{{message.body|dencryption_text}}</p>
+<p>{{message.date}}</p>
+{% if user.id == message.user.id %}
+    
+
+<form method="POST" dir="rtl" action="{% url 'delete' chat.id message.id %}" >
+  {% csrf_token %}  
+  <button style="border:none; background:none;" type="submit" name="delete" >delete</button>
+  <button style="border:none; background:none;" type="submit"><a style="text-decoration:none; color:black;" href="{% url 'edit' chat.id message.id %}">Edit</a></button>
+</form>
+{% endif %}
+
+</div>
+  
+{% endfor %}
+</div>
+<form class="alert alert-secondary" method='post' >
+  {% csrf_token %}  
+  {{form.as_p}}
+        <div class="d-grid gap-2">
+
+      <button class="btn btn-dark" type="submit" >Send</button>
+    </div>
+</form>
+{% else %}
+<h1 class=" alert alert-secondary">
+  sorry !You are not allowed to this page !
+</h1>
+
+{% endif %}
+
+
+{% endblock content %}

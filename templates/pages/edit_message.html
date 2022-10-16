@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<br>
+{% if message.user.id == user.id %}
+    
+
+    <h1 class="text-center alert alert-secondary" >Edit Message</h1>
+<div class="alert alert-secondary" style="min-height:75px;">
+
+<form class="alert alert-secondary" method='post' >
+  {% csrf_token %}
+
+  <input type="text" name="body" value="{{en}}" class="form-control" title="" required="" id="id_body">        <div class="d-grid gap-2">
+
+      <button class="btn btn-dark mt-2" type="submit" >edit</button>
+    </div>
+
+</form>
+{% else %}
+    <h1 class="text-center alert alert-secondary" >You do not have permission to access the page</h1>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+    <h1 class="text-center alert alert-secondary" >Django Chat</h1>
+    
+    <form class=' alert alert-secondary' method="post" >
+      {% csrf_token %}  
+      {{form.as_p}}
+      <div class="d-grid gap-2">
+
+      <button class="btn btn-dark" type="submit" >Create</button>
+    </div>
+    </form>
+{% endblock content %}
